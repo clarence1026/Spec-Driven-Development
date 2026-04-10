@@ -1,4 +1,4 @@
-# Review Checklist 与 Change Request 规范模板
+# 评审清单（Review Checklist）与变更申请（Change Request）规范模板
 
 ## 一、Review Checklist
 
@@ -6,14 +6,21 @@
 
 `Review Checklist` 是结构化评审工件，用于把 review 从经验检查变成标准核对。
 
+它对照的，不应只是“设计稿像不像”，而应包括：
+
+- 当前需求理解结果
+- 当前页面规则表达
+- 当前行为规格表达
+- 当前实现结果
+
 ### 必须覆盖的内容
 
-- 输入工件是否齐备
-- `Design Contract` 对照
-- `Page Spec` 对照
-- 状态与交互检查
-- 工程质量检查
-- 资产与沉淀检查
+- 输入事实是否齐备
+- 当前页面规则是否有明确表达
+- 当前行为规格是否有明确表达
+- 状态与交互是否完整
+- 工程质量是否达标
+- 回写与资产沉淀是否完成
 
 ### 模板
 
@@ -25,19 +32,19 @@
 - 页面 / 模块：
 - 评审人：
 - 评审日期：
-- 对应 Feature Brief：
-- 对应 Design Contract：
-- 对应 Page Spec：
+- 当前需求理解结果：
+- 当前页面规则表达：
+- 当前行为规格表达：
 - 对应 Implementation Record：
 
-## 一、输入工件是否齐备
-- [ ] `Feature Brief` 已齐备
-- [ ] `Design Contract` 已齐备
-- [ ] `Page Spec` 已齐备
+## 一、输入事实是否齐备
+- [ ] 需求理解结果已齐备
+- [ ] 页面规则表达已齐备
+- [ ] 行为规格表达已齐备
 - [ ] `Implementation Record` 已开启
 - [ ] 评审证据已准备
 
-## 二、对照 Design Contract
+## 二、对照当前页面规则
 - [ ] 页面整体结构一致
 - [ ] 关键组件列表一致
 - [ ] 组件状态覆盖完整
@@ -45,7 +52,7 @@
 - [ ] 响应式规则已验证
 - [ ] 设计系统依赖按要求复用
 
-## 三、对照 Page Spec
+## 三、对照当前行为规格
 - [ ] `page` / `route` / `layout` 一致
 - [ ] `sections` 一致
 - [ ] `dataSources` 一致
@@ -68,7 +75,8 @@
 - [ ] 文件映射清晰
 - [ ] 偏差项已记录
 
-## 六、资产与沉淀检查
+## 六、回写与资产沉淀检查
+- [ ] `Implementation Record` 已完整回写
 - [ ] 资产候选已判断
 - [ ] 候选资产已登记
 - [ ] 如需升级，已进入资产流程
@@ -83,25 +91,31 @@
 
 ### 定义
 
-`Change Request` 是后续调整的统一入口工件，用于把变更先结构化，再进入执行。
+`Change Request` 是变更的统一入口工件，用于先判断“变更影响了哪一层事实”，再进入实现。
+
+它的目标不是多一份申请单，而是避免：
+
+- 代码先改了，规则没同步
+- 规则改了，规格没同步
+- 页面行为变了，review 还在对照旧 spec
 
 ### 变更分级
 
-- `L0` 文案 / 视觉微调
-- `L1` 组件级设计调整
-- `L2` 页面结构调整
-- `L3` 需求级调整
+- `L0`：文案 / 视觉微调，不改变页面可观察行为
+- `L1`：局部交互或组件级行为调整
+- `L2`：页面结构、状态、数据、权限、埋点等行为调整
+- `L3`：需求目标或范围级调整
 
 ### 标准流程
 
-`Change Request -> 变更分级 -> 先更新对应工件 -> 再改实现 -> Review -> 回写 Implementation Record`
+`Change Request -> 判断影响层级 -> 更新当前规则或当前规格 -> 再改实现 -> Review -> 回写 Implementation Record`
 
 ### 变更与工件更新关系
 
-- `L0`：通常更新 `Implementation Record`，必要时补充 `Design Contract`
-- `L1`：优先更新 `Design Contract`，再更新实现
-- `L2`：必须更新 `Design Contract` 与 `Page Spec`
-- `L3`：先回到 `Feature Brief`，再重走后续链路
+- `L0`：通常更新 `Implementation Record`，必要时补充页面规则表达
+- `L1`：优先判断是否需要 `Page Spec patch`，必要时补页面规则表达
+- `L2`：必须更新当前行为规格，必要时同步更新页面规则表达
+- `L3`：先回到需求理解结果，再重走后续链路
 
 ### 模板
 
@@ -122,8 +136,9 @@
 - <变更项 2>
 
 ## 影响范围
-- 需求：
-- 设计：
+- 需求理解：
+- 页面规则：
+- 行为规格：
 - 实现：
 - review：
 
@@ -131,10 +146,10 @@
 - 建议级别：<L0 / L1 / L2 / L3>
 - 说明：
 
-## 需要更新的工件
-- [ ] `Feature Brief`
-- [ ] `Design Contract`
-- [ ] `Page Spec`
+## 需要更新的表达
+- [ ] 需求理解结果
+- [ ] 页面规则表达
+- [ ] `Page Spec` / patch
 - [ ] `Implementation Record`
 
 ## 确认信息
@@ -145,9 +160,8 @@
 
 ## 三、使用原则
 
-- review 必须对照 `Design Contract` 与 `Page Spec`
+- review 必须对照当前页面规则与当前行为规格
 - 变更不得直接从代码开始
 - 所有 review 结论最终都要回写 `Implementation Record`
-
-
+- 行为变化后必须判断是否需要更新 `Page Spec` 或 patch
 
