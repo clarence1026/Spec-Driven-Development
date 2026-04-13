@@ -1,0 +1,76 @@
+meta:
+  page: user-list
+  route: /users
+  goal: 帮助运营查看、筛选并进入用户详情
+  in_scope:
+    - 用户列表展示
+    - 用户名搜索
+    - 状态筛选
+  out_of_scope:
+    - 批量操作
+
+layout:
+  sections:
+    - id: page-header
+      type: header
+      purpose: 展示页面标题
+    - id: filter-bar
+      type: filter-bar
+      purpose: 提供搜索和状态筛选
+    - id: user-table
+      type: data-table
+      purpose: 展示用户列表
+    - id: pagination
+      type: pagination
+      purpose: 翻页
+
+states:
+  page:
+    - loading
+    - ready
+    - empty
+    - error
+
+interactions:
+  - id: search-user
+    trigger: 输入关键词并提交
+    result: 刷新列表
+    feedback: 保留搜索词并更新结果
+    fallback: 请求失败时展示错误提示
+  - id: filter-status
+    trigger: 切换状态筛选项
+    result: 按状态过滤列表
+    feedback: 当前筛选项高亮
+    fallback: 无结果时进入空态
+  - id: click-row
+    trigger: 点击表格行
+    result: 进入用户详情页
+    feedback: 页面跳转
+    fallback: 无权限时提示不可访问
+
+displayRules:
+  - field: username
+    rule: 必须展示
+  - field: status
+    rule: 使用标签展示
+  - field: createdAt
+    rule: 统一时间格式
+  - field: remark
+    rule: 过长时截断
+
+constraints:
+  - 当前阶段不支持批量操作
+  - 无权限时不显示详情入口
+
+responsive:
+  desktop:
+    filter-bar: 横向展示
+    user-table: 完整列展示
+  mobile:
+    filter-bar: 纵向堆叠
+    user-table: 缩减为核心字段
+
+acceptance:
+  - 搜索与状态筛选可叠加
+  - 空态有明确提示
+  - 错误态可识别且可恢复

@@ -1,0 +1,44 @@
+meta:
+  page: <page-name>
+  route: <route-path>
+  goal: <page-goal>
+  in_scope:
+    - <in-scope-item>
+  out_of_scope:
+    - <out-of-scope-item>
+
+layout:
+  sections:
+    - id: <section-id>
+      type: <section-type>
+      purpose: <purpose>
+
+states:
+  page:
+    - loading
+    - ready
+    - empty
+    - error
+
+interactions:
+  - id: <interaction-id>
+    trigger: <trigger>
+    result: <result>
+    feedback: <feedback>
+    fallback: <fallback>
+
+displayRules:
+  - field: <field-name>
+    rule: <display-rule>
+
+constraints:
+  - <constraint>
+
+responsive:
+  desktop:
+    <section-id>: <desktop-rule>
+  mobile:
+    <section-id>: <mobile-rule>
+
+acceptance:
+  - <acceptance-rule>
