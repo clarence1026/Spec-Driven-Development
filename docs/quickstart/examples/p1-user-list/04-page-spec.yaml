@@ -1,6 +1,7 @@
 meta:
   page: user-list
   route: /users
+  pattern: list-page-table
   goal: 帮助运营查看、筛选并进入用户详情
   in_scope:
     - 用户列表展示
@@ -8,6 +9,7 @@ meta:
     - 状态筛选
   out_of_scope:
     - 批量操作
+  pattern_deviation_reason: 无，沿用默认列表页 pattern
 
 layout:
   sections:
@@ -66,6 +68,9 @@ responsive:
   desktop:
     filter-bar: 横向展示
     user-table: 完整列展示
+  pad:
+    filter-bar: 分两行展示
+    user-table: 保留核心列并允许横向滚动
   mobile:
     filter-bar: 纵向堆叠
     user-table: 缩减为核心字段

@@ -1,11 +1,13 @@
 meta:
   page: <page-name>
   route: <route-path>
+  pattern: <pattern-id>
   goal: <page-goal>
   in_scope:
     - <in-scope-item>
   out_of_scope:
     - <out-of-scope-item>
+  pattern_deviation_reason: <reason-if-any>
 
 layout:
   sections:
@@ -37,6 +39,8 @@ constraints:
 responsive:
   desktop:
     <section-id>: <desktop-rule>
+  pad:
+    <section-id>: <pad-rule>
   mobile:
     <section-id>: <mobile-rule>
 

@@ -26,6 +26,8 @@
 - 可以减少从零组织材料的成本
 - 能帮助团队快速进入统一执行口径
 
+当前 `theme / token / kit` 目录已经预留，但仍以候选观察为主，待真实页面复用稳定后再进入正式共享资产清单。
+
 ## 优先复用顺序
 
 启动试点时，不建议从零写，优先按下面顺序复用：
@@ -38,17 +40,20 @@
 
 ## 首批候选资产
 
-首轮试点跑完后，建议优先观察下面 5 类对象是否值得升级：
+首轮试点跑完后，建议优先观察下面 8 类对象是否值得升级：
 
 | 候选对象 | 类型 | 初始级别 | 升级信号 |
 | --- | --- | --- | --- |
-| list-page page spec 写法 | spec / pattern | L1 | 两个以上列表页复用 |
-| UI 规则确认卡字段集 | template | L1 | UI 连续两轮低成本复用 |
-| review 差异检查口径 | rule | L1 | review 问题分布趋于稳定 |
-| task-context prompt | prompt | L1 | 多页面生成质量稳定 |
-| implementation-record 回写格式 | template | L1 | 回写内容开始稳定复用 |
+| `list-page-table` 页面模式 | pattern | L1 | 两个以上后台列表页复用 |
+| `responsive-admin-rule` | rule | L1 | 三端适配问题开始趋于稳定 |
+| `permission-rule` | rule | L1 | 页面 / 按钮权限口径开始稳定复用 |
+| `review-admin-checklist` | rule | L1 | review 问题分布趋于稳定 |
+| `page-spec-template` | template | L1 | 多个后台页面按同一结构生成 Spec |
+| `admin-theme-foundation` | theme | L1 | 两个以上后台页面开始复用同一品牌或主题基础值 |
+| `admin-token-set` | token | L1 | 颜色、字号、间距、圆角等基础值开始形成稳定命名 |
+| `admin-component-kit` | kit | L1 | 列表、表单、详情页开始复用同一套组件封装和样式能力 |
 
-这 5 类对象优先级高，是因为它们最容易在首轮试点后形成稳定复用价值。
+这 8 类对象优先级高，是因为它们最符合当前“基于成熟底座沉淀增量交付资产”的方向。
 
 ## 登记最小字段
 
@@ -69,9 +74,11 @@
 
 | 类型 | 示例 |
 | --- | --- |
-| `pattern` | list-page / detail-page / form-page |
+| `pattern` | list-page-table / detail-page-basic / form-page-basic |
 | `spec` | page-spec-mvp / patch-spec |
-| `rule` | review-checklist / ai-stop-rules |
+| `rule` | review-admin-checklist / responsive-admin-rule / permission-rule |
+| `theme / token` | admin-theme-foundation / admin-token-set |
+| `kit` | admin-component-kit |
 | `prompt` | task-context prompt / page-spec prompt |
 | `case` | 成功试点案例 / 反例 |
 

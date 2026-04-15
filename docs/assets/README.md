@@ -24,6 +24,27 @@ flowchart LR
     B --> C[平台消费资产]
 ```
 
+如果把资产从“交付结果”演进到“共享资产”，再演进到“平台资产”串起来看，可进一步理解为：
+
+阅读提示：
+
+- 左侧看“资产从哪里来”
+- 中间看“哪些对象会进入共享层”
+- 右侧看“共享资产如何一边服务下个项目，一边被平台消费”
+
+```mermaid
+flowchart LR
+    A[页面交付完成] --> B[Writeback / Implementation Record]
+    B --> C{是否可复用}
+    C -->|否| D[保留为项目级记录]
+    C -->|是| E[登记为 Candidate Asset]
+    E --> F[Pattern / Rule / Theme / Token / Kit / Template / Prompt / Case]
+    F --> G[公共共享资产]
+    G --> H[下一个项目直接复用]
+    G --> I[Registry / Schema / Workflow / Checker]
+    I --> J[平台消费与受控生成]
+```
+
 ### 项目级资产
 
 放在业务项目里，服务当前页面执行闭环。
@@ -51,6 +72,8 @@ flowchart LR
 
 - 模板
 - pattern
+- theme / token
+- kit
 - review rule
 - prompt / workflow
 - 试点案例
@@ -117,12 +140,16 @@ flowchart LR
 | `docs/assets/rules/` | 存放可复用规则对象 |
 | `docs/assets/prompts/` | 存放可复用 prompt / workflow |
 | `docs/assets/patterns/` | 存放可复用页面模式 |
+| `docs/assets/themes/` | 存放可复用主题资产 |
+| `docs/assets/tokens/` | 存放可复用设计基础值 |
+| `docs/assets/kit/` | 存放可复用实现基础资产 |
 | `docs/assets/cases/` | 存放案例资产 |
 
 ## 管理原则
 
 当前阶段的资产管理建议遵循以下原则：
 
+- 基础底座能力优先复用外部成熟 starter，不重复造成熟后台框架
 - 先从真实页面中沉淀，不从抽象讨论中直接生造资产
 - 先保证可复用，再追求命名和结构的完全平台化
 - 先登记当前用途和下一步动作，再决定是否升级
