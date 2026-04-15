@@ -18,6 +18,7 @@
 - PRD / Issue
 - Figma / 标注 / 评论
 - 历史页面 / 共享资产
+- design token / variable 真相源（Figma Variables / 项目代码 theme / token 文件）
 
 ### Acceptance
 - 验收人
@@ -37,10 +38,11 @@
 - 展示 / 显隐 / 格式化规则
 
 ### Visual / Token Rules
-- 优先写语义化 token / variable 名称
+- 优先写语义化 design token / variable 名称
 - 如已有 Figma Variables，写清变量名
-- 如项目代码已有 token，写清对应 token 名称
-- 如还没有共享 token，暂记临时色值 / 间距值，并标记为候选资产
+- 如项目代码已有 theme / token，写清对应 token 名称
+- 如还没有稳定 token，暂记临时色值 / 间距值，并标记为候选资产
+- 这里只做说明和引用，不把 spec 当作 token 真相源
 
 ### Responsive Rules
 - PC / Pad / Mobile 表达方式
@@ -62,9 +64,9 @@
 - 业务约束 / 技术约束 / 本轮边界
 
 ### Theme / Token Usage
-- 已复用的 theme / token / 变量
+- 已复用的 theme / token / variable
 - 当前页面新增的临时色值 / 间距 / 字重 / 圆角
-- 哪些值只属于当前页面，哪些值可能升级为共享 token
+- 哪些值只属于当前页面，哪些值可能升级为共享资产中的 token
 
 ### Reuse
 - 复用的 pattern / rule / theme / token / kit
@@ -77,6 +79,7 @@
 ### Implementation Notes
 - 实现差异
 - 被接受的偏差
+- 哪些内容继续保留为项目级执行工件
 
 ### Decisions
 - 新增裁决与例外处理

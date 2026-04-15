@@ -20,3 +20,8 @@
 - `docs/superpowers/README.md`
 - `docs/superpowers/spec-template.md`
 - `docs/superpowers/plan-template.md`
+
+当前真实页面的默认做法，是创建：
+
+- 1 份 spec 主文件
+- 1 份 plan 主文件

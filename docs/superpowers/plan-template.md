@@ -8,6 +8,7 @@
 ## Inputs
 - 对应 spec 路径
 - 依赖设计稿 / 接口 / 历史页面 / 共享资产
+- 如涉及 design token / variable，引用 Figma Variables 或项目代码中的 theme / token 文件
 
 ## Work Items
 1. 搭页面骨架
@@ -31,4 +32,4 @@
 ## Done Criteria
 - 页面完成
 - spec 已回写
-- 至少 1 个资产候选已登记
+- 至少 1 个资产候选已登记，或明确说明本轮没有候选资产

@@ -35,6 +35,9 @@
 
 - PRD / Issue：用户管理后台需要一个标准列表页，承接查询与查看详情入口
 - Figma / 标注：标准后台列表布局，包含筛选区、表格区、分页区
+- design token / variable 真相源：
+  - Figma Variables
+  - 项目代码中的 theme / token 文件
 - 历史页面：订单列表、内容列表等后台标准表格列表页
 - 共享资产参考：
   - `list-page-table`
@@ -95,6 +98,14 @@
 - 用户状态使用统一状态标签表达
 - 注册时间统一按本地时间格式展示
 - 手机号默认脱敏展示
+
+### Visual / Token Rules
+
+- 优先复用后台管理侧已有的 theme / token
+- 用户状态标签优先使用语义化状态颜色，而不是页面内散落的临时色值
+- 列表区、筛选区、分页区的间距优先复用现有后台列表页 spacing token
+- 如果本轮出现新的临时色值、间距或标签样式，需要在 writeback 中判断是否升级为共享资产中的 token
+- spec 只负责说明和引用，不作为 design token / variable 真相源
 
 ### Responsive Rules
 
@@ -161,6 +172,16 @@
 - Mobile 端允许改变表达形式，但不能删除核心业务能力
 - 本轮不引入批量操作和高级筛选
 
+### Theme / Token Usage
+
+- 已复用：
+  - 后台列表页基础 spacing token
+  - 状态标签语义色 token
+- 待项目代码接入：
+  - `admin-theme-foundation`
+  - `admin-token-set`
+- 若本轮实现中出现临时色值、字号或间距，仅作为项目级执行工件记录，待复用稳定后再升级为共享资产
+
 ### Reuse
 
 - Pattern：
@@ -188,6 +209,7 @@
 - 待实现后回填：
   - 最终 Mobile 端采用哪种表达方式
   - 接口实际字段与 spec 是否有差异
+  - 哪些视觉值继续保留为项目级执行工件
 
 ### Decisions
 

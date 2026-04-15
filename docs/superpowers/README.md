@@ -28,8 +28,8 @@
 
 当前仓库建议：
 
-- 持续维护中的页面 spec：`<page-name>-spec.md`
-- 持续维护中的页面 plan：`<page-name>-plan.md`
+- 持续维护中的页面 spec 主文件：`<page-name>-spec.md`
+- 持续维护中的页面 plan 主文件：`<page-name>-plan.md`
 
 例如：
 
@@ -44,7 +44,7 @@
 
 ## 快照文件放置位置
 
-当前建议把快照统一放到：
+当前建议把快照文件统一放到：
 
 - `docs/archive/snapshots/<page-name>/`
 
@@ -56,7 +56,7 @@
 这样可以保证：
 
 - `docs/superpowers/specs/` 和 `docs/superpowers/plans/` 中只保留当前主文件
-- 历史冻结版本集中归档，不和当前执行文件混在一起
+- 历史冻结版本集中归档，不和当前主文件混在一起
 
 只有在下面几种情况，才建议额外产生带日期的文件：
 

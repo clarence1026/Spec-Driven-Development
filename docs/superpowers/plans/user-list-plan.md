@@ -12,6 +12,9 @@
 - 设计输入：
   - 用户列表 Figma 页面
   - UI 标注 / 评论
+- design token / variable 真相源：
+  - Figma Variables
+  - 项目代码中的 theme / token 文件
 - 共享参考：
   - 标准后台列表页历史实现
   - `list-page-table`
@@ -78,5 +81,5 @@
 
 - 页面可交付
 - spec 已补充 writeback
-- 至少 1 个资产候选被记录
+- 至少 1 个资产候选被记录，或明确说明本轮没有候选资产
 - 团队可以基于这份 spec / plan 复盘一次完整闭环
