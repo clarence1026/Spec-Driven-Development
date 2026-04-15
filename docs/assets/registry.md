@@ -10,15 +10,13 @@
 
 ## 当前可复用资产
 
-当前仓库处于首轮试点启动阶段，优先登记以下启动资产：
+当前仓库处于 superpowers-first 试点启动阶段，优先登记以下启动资产：
 
 | 资产名 | 类型 | 级别 | 来源 | 当前用途 |
 | --- | --- | --- | --- | --- |
-| UI 页面规则确认卡模板 | template | L2 bootstrap | `docs/quickstart/templates/02-ui-rule-card.md` | 供 UI 页面规则确认使用 |
-| Page Spec MVP 模板 | template | L2 bootstrap | `docs/quickstart/templates/04-page-spec.yaml` | 供首轮页面 Spec 起草使用 |
-| Review Checklist 模板 | rule-template | L2 bootstrap | `docs/quickstart/templates/05-review-checklist.md` | 供页面评审使用 |
-| Implementation Record 模板 | template | L2 bootstrap | `docs/quickstart/templates/06-implementation-record.md` | 供回写与资产判断使用 |
-| P1 用户列表页案例 | case | L1 sample | `docs/quickstart/examples/p1-user-list/` | 供首轮试点参考 |
+| Superpowers Spec 骨架 | template | L2 bootstrap | `docs/superpowers/spec-template.md` | 供页面 spec 起草使用 |
+| Superpowers Plan 骨架 | template | L2 bootstrap | `docs/superpowers/plan-template.md` | 供页面 plan 起草使用 |
+| P1 用户列表页案例 | case | L1 sample | `docs/quickstart/examples/p1-user-list/` | 供理解历史逻辑工件和闭环结构参考 |
 
 这些资产的共同特点是：
 
@@ -32,8 +30,8 @@
 
 启动试点时，不建议从零写，优先按下面顺序复用：
 
-1. `docs/quickstart/templates/`
-2. `docs/quickstart/examples/p1-user-list/`
+1. `docs/superpowers/spec-template.md`
+2. `docs/superpowers/plan-template.md`
 3. `docs/assets/registry.md` 中已登记资产
 
 这条顺序的目的，是让首轮试点尽量减少重复劳动，优先消费现成对象。
@@ -48,12 +46,12 @@
 | `responsive-admin-rule` | rule | L1 | 三端适配问题开始趋于稳定 |
 | `permission-rule` | rule | L1 | 页面 / 按钮权限口径开始稳定复用 |
 | `review-admin-checklist` | rule | L1 | review 问题分布趋于稳定 |
-| `page-spec-template` | template | L1 | 多个后台页面按同一结构生成 Spec |
+| `superpowers-spec-structure` | template | L1 | 多个后台页面按同一 spec 结构生成 |
 | `admin-theme-foundation` | theme | L1 | 两个以上后台页面开始复用同一品牌或主题基础值 |
 | `admin-token-set` | token | L1 | 颜色、字号、间距、圆角等基础值开始形成稳定命名 |
 | `admin-component-kit` | kit | L1 | 列表、表单、详情页开始复用同一套组件封装和样式能力 |
 
-这 8 类对象优先级高，是因为它们最符合当前“基于成熟底座沉淀增量交付资产”的方向。
+这 8 类对象优先级高，是因为它们最符合当前“基于 superpowers-first 执行入口沉淀增量交付资产”的方向。
 
 ## 登记最小字段
 
@@ -75,11 +73,11 @@
 | 类型 | 示例 |
 | --- | --- |
 | `pattern` | list-page-table / detail-page-basic / form-page-basic |
-| `spec` | page-spec-mvp / patch-spec |
+| `spec` | superpowers-spec-structure / patch-spec |
 | `rule` | review-admin-checklist / responsive-admin-rule / permission-rule |
 | `theme / token` | admin-theme-foundation / admin-token-set |
 | `kit` | admin-component-kit |
-| `prompt` | task-context prompt / page-spec prompt |
+| `prompt / workflow` | task-context prompt / spec prompt / review workflow |
 | `case` | 成功试点案例 / 反例 |
 
 ## 说明

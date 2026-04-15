@@ -7,8 +7,25 @@
 本目录不负责解释完整背景，只负责回答 3 个问题：
 
 - 启动前先看什么
-- 当前要产出什么
+- 当前默认怎么起 spec / plan
 - 按什么顺序落地
+
+## 当前默认启动方式
+
+当前默认执行入口已经统一到：
+
+- `docs/superpowers/specs/`
+- `docs/superpowers/plans/`
+
+也就是说，当前不再默认通过复制 `01-task-context.md / 02-ui-rule-card.md / 04-page-spec.yaml / 06-implementation-record.md` 这类模板启动页面；这些模板只保留为历史逻辑参考和未来结构化抽象参考。
+
+如果现在要启动一个真实页面，默认动作是：
+
+1. 创建 1 份 spec
+2. 创建 1 份 plan
+3. 由 AI 起草初稿
+4. 由责任人确认关键事实
+5. 按 spec + plan 进入实现与回写
 
 ## 模式选择判断
 
@@ -32,7 +49,7 @@
 说明：
 
 - 允许直接生成
-- 默认不要求 Spec
+- 默认不要求 spec / plan
 - 默认不进入共享资产沉淀
 
 ### L2：轻量 Spec 模式
@@ -45,13 +62,13 @@
 
 流程：
 
-`Task Context -> UI Rule -> Page Spec -> Code -> Record`
+`Spec -> Plan -> Code -> Writeback`
 
 说明：
 
 - 这是正式页面的默认模式
-- 默认强制 pattern
-- 默认保留最小回写
+- 当前默认通过 `docs/superpowers/specs/` 和 `docs/superpowers/plans/` 落地
+- 默认保留最小回写和资产候选
 
 ### L3：完整工程模式
 
@@ -64,7 +81,7 @@
 
 流程：
 
-`Context -> Rule -> Rule Engineering -> Spec -> Review -> Asset`
+`Spec -> Rule Engineering -> Plan -> Review -> Asset`
 
 说明：
 
@@ -95,137 +112,98 @@
 - 页面类型：`List Page`
 - 页面形态：标准后台表格列表页
 - 终端范围：`PC / Pad / Mobile`
-- 默认模式：轻量模式优先
+- 默认模式：superpowers-first，轻量 spec 优先
 - 默认 pattern 类型：`list-page-table`
 
-当前若尚未拆出独立共享 pattern 文件，首轮可先以 `docs/quickstart/examples/p1-user-list/` 作为默认 pattern 参考来源。
-
-只有在页面结构明显偏离默认列表页模式时，才允许不按默认 pattern 起步；此时必须在 `06-implementation-record.md` 中说明原因。
-
-默认页面的 pattern 约束：
-
-- 默认页面必须声明 pattern
-- 未填写 pattern，不允许创建 `04-page-spec.yaml`
-- 只有在明确偏离默认页面结构时，才允许填写 `pattern_deviation_reason`
-- 所有 deviation 必须在 review 中被确认合理
+当前若尚未拆出独立共享 pattern 文件，首轮可先以 `docs/quickstart/examples/p1-user-list/` 作为历史逻辑参考来源。
 
 ## 启动前先看什么
 
-启动前建议先阅读以下 2 份文档：
+启动前建议先阅读以下 3 份文档：
 
 1. `docs/README.md`
 2. `docs/playbook.md`
+3. `docs/superpowers/README.md`
 
 其中：
 
 - `docs/README.md` 用于统一方向、目标与方案理解
 - `docs/playbook.md` 用于明确执行步骤、责任与门禁
+- `docs/superpowers/README.md` 用于明确 spec / plan 的目录约定与骨架
 
-当前目录是默认试点启动入口。
+当前目录是默认试点启动入口，但默认执行路径已经切换到 superpowers。
 
 ## 最小执行包
 
-本目录保留 6 个模板文件，但首轮标准后台表格列表页的默认成功路径，优先要求先跑通 4 个必做文件：
+首轮标准后台表格列表页的默认成功路径，只要求先跑通下面两类工件：
 
 ```text
-01-task-context.md
-02-ui-rule-card.md
-04-page-spec.yaml
-06-implementation-record.md
-```
-
-当页面复杂度上升，或需要更强的规则对齐与结构化评审时，再补齐完整 6 文件：
-
-```text
-01-task-context.md
-02-ui-rule-card.md
-03-page-rules.md
-04-page-spec.yaml
-05-review-checklist.md
-06-implementation-record.md
+docs/superpowers/specs/<page-name>-spec.md
+docs/superpowers/plans/<page-name>-plan.md
 ```
 
 默认理解方式：
 
-- 4 个必做文件用于保证首轮能在 1 天内跑通一个页面闭环
-- 额外 2 个文件用于增强规则工程化和结构化 review
+- spec 用于承接任务上下文、页面规则、页面规格、review 重点和 writeback
+- plan 用于承接任务拆分、风险、实施顺序和验证动作
 
-这 6 个文件的作用如下：
-
-| 文件 | 作用 | 适合谁重点看 |
-| --- | --- | --- |
-| `01-task-context.md` | 收敛页面目标、范围、输入来源与验收口径 | PRD / FE |
-| `02-ui-rule-card.md` | 确认页面结构、状态、交互、边界与多端要求 | UI / FE |
-| `03-page-rules.md` | 将规则升级成工程可消费的表达 | FE / AI |
-| `04-page-spec.yaml` | 作为实现主输入 | FE / AI |
-| `05-review-checklist.md` | 对照规则和 Spec 做评审 | Reviewer |
-| `06-implementation-record.md` | 记录偏差、例外与资产候选 | FE / 负责人 |
-
-可以按两段理解这组工件：
-
-- 前 4 个文件承接输入收敛、规则确认与规格生成
-- 后 2 个文件承接评审对照与回写沉淀
+这两个工件已经足以支撑首轮页面级闭环，不再默认要求团队维护多份并行模板。
 
 ## 推荐启动顺序
 
-建议按以下顺序推进，不要从零组织材料，也不要从零定义页面模式：
+建议按以下顺序推进，不要再默认从零复制多份模板：
 
 1. 先确定页面类型是否属于默认 `list-page-table`
-2. 复制模板目录中的文件到当前试点目录
-3. 参考 `docs/quickstart/examples/p1-user-list/`，先完成 `01-task-context.md`
-4. 完成 `02-ui-rule-card.md`，确认 UI 是否参与；若未参与，先指定规则代理人
-5. 满足前两步后，才能生成 `04-page-spec.yaml`
-6. 如页面复杂，或需要强化规则复用与结构化 review，再补齐 `03-page-rules.md` 和 `05-review-checklist.md`
-7. 实现完成后，必须回写 `06-implementation-record.md`
+2. 在 `docs/superpowers/specs/` 创建 `<page-name>-spec.md`
+3. 在 `docs/superpowers/plans/` 创建 `<page-name>-plan.md`
+4. 让 AI 先起草 spec 中的 `Task Context`、`UI Rules`、`Page Spec`
+5. 由 UI / FE 确认规则和关键边界
+6. 让 AI 再起草 plan 中的 `Work Items`、`Risks`、`Verification`
+7. 按 spec + plan 实现页面
+8. 实现完成后，必须将差异、review 结果和资产候选回写到 spec
 
 门禁式要求：
 
-- 没有 `01-task-context.md`，不允许创建 `04-page-spec.yaml`
-- 没有 `02-ui-rule-card.md`，不允许进入实现
-- 没有 review 留痕，不允许将页面标记为完成
-- 没有 `06-implementation-record.md`，不视为闭环完成
+- 没有 spec，不允许进入实现
+- spec 中没有页面规则确认，不允许进入实现
+- 没有 plan，不建议进入正式开发
+- 没有 writeback，不视为闭环完成
 
 对应关系如下：
 
 ```mermaid
 flowchart LR
-    A[Task Context] --> B[UI Rule Card]
-    B --> C[Page Rules]
-    C --> D[Page Spec]
-    D --> E[Review Checklist]
-    E --> F[Implementation Record]
+    A[Superpowers Spec<br/>任务上下文 / 页面规则 / 页面规格] --> B[Superpowers Plan<br/>任务拆分 / 风险 / 验证]
+    B --> C[Code<br/>实现]
+    C --> D[Review<br/>评审]
+    D --> E[Writeback in Spec<br/>回写]
 ```
 
-## 模板清单
+## Spec / Plan 推荐骨架
 
-可直接复用以下模板：
+当前推荐的骨架可直接参考：
 
-- `docs/quickstart/templates/01-task-context.md`
-- `docs/quickstart/templates/02-ui-rule-card.md`
-- `docs/quickstart/templates/03-page-rules.md`
-- `docs/quickstart/templates/04-page-spec.yaml`
-- `docs/quickstart/templates/05-review-checklist.md`
-- `docs/quickstart/templates/06-implementation-record.md`
+- `docs/superpowers/spec-template.md`
+- `docs/superpowers/plan-template.md`
 
 建议做法是：
 
-- 先复制模板
-- 再按默认 pattern 参考补充内容
+- 先按骨架创建 spec / plan
+- 再按当前页面补充实际内容
 - 最后对照案例检查表达是否足够清楚
 
-PowerShell 参考命令：
+## 历史逻辑参考
 
-```powershell
-New-Item -ItemType Directory -Path '.\docs\quickstart\workspaces\p1-your-page' -Force
-Copy-Item '.\docs\quickstart\templates\*' '.\docs\quickstart\workspaces\p1-your-page\' -Recurse -Force
-```
+以下目录仍然保留，但当前不再作为默认执行路径：
 
-关键提示：
+- `docs/quickstart/templates/`
+- `docs/quickstart/examples/`
 
-- `01-task-context.md` 里先写清模式选择、页面类型和 pattern 来源
-- `04-page-spec.yaml` 应优先引用已有 pattern，再补当前页面差异
-- 如未引用默认 pattern，必须在 `06-implementation-record.md` 中说明偏离原因
-- AI 在生成 `Page Spec` 时，必须优先引用已登记的 pattern / template；未引用时必须明确标注为 pattern 偏离
+可以把它们理解为：
+
+- 历史逻辑工件参考
+- 未来 schema / workflow 抽象参考
+- 对比当前 superpowers-first 工作方式的辅助材料
 
 ## 参考案例
 
@@ -233,22 +211,11 @@ Copy-Item '.\docs\quickstart\templates\*' '.\docs\quickstart\workspaces\p1-your-
 
 - `docs/quickstart/examples/p1-user-list/`
 
-建议优先阅读顺序：
+这个案例当前更适合被理解为：
 
-1. `docs/quickstart/examples/p1-user-list/01-task-context.md`
-2. `docs/quickstart/examples/p1-user-list/02-ui-rule-card.md`
-3. `docs/quickstart/examples/p1-user-list/04-page-spec.yaml`
-4. `docs/quickstart/examples/p1-user-list/06-implementation-record.md`
-
-如果要看完整闭环，再补看：
-
-- `docs/quickstart/examples/p1-user-list/03-page-rules.md`
-- `docs/quickstart/examples/p1-user-list/05-review-checklist.md`
-
-对首轮后台列表页来说，这个案例同时承担两种作用：
-
-- 作为“第一周跑通”的完整示例
-- 作为当前默认 `list-page-table` pattern 的参考样本
+- 历史逻辑工件示例
+- 帮助理解页面闭环由哪些逻辑部分组成
+- 为未来结构化抽象提供参考样本
 
 ## 一天跑通路径
 
@@ -256,28 +223,28 @@ Copy-Item '.\docs\quickstart\templates\*' '.\docs\quickstart\workspaces\p1-your-
 
 1. 选一个标准后台表格列表页
 2. 明确负责人、UI 是否参与、采用轻量还是标准模式
-3. 完成 `01-task-context.md`
-4. 完成 `02-ui-rule-card.md`
-5. 生成 `04-page-spec.yaml`
+3. 创建 spec 初稿
+4. 创建 plan 初稿
+5. 确认页面规则和实现范围
 6. 实现页面
-7. 在 `06-implementation-record.md` 中留下 review 留痕、差异和资产候选
+7. 在 spec 中留下 review 留痕、差异和资产候选
 
 跑通这 7 步后，团队至少应当第一次看到：
 
-- 页面闭环如何成立
-- pattern 如何被引用或偏离
-- 资产候选如何被记录
+- spec / plan 如何成为统一执行入口
+- 页面闭环如何在 superpowers-first 模式下成立
+- 资产候选如何被记录并进入后续沉淀
 
 ## 启动建议
 
 首轮试点建议遵循以下原则：
 
 - 先选 1 个 `P1` 页面，不要同时开多个页面
-- 先明确 PRD / UI / FE / approver，再开始生成文档
-- 先形成最小工件包，再进入实现
+- 先明确 PRD / UI / FE / approver，再开始生成 spec / plan
+- 先形成最小 spec / plan，再进入实现
 - 首轮结束后，必须补齐回写和资产判断
 - 优先按默认 `list-page-table` pattern 启动，不从零定义同类页面
 
 一句话原则：
 
-`首轮不要追求一次做大，先把一个页面的闭环跑通`
+`首轮不要追求一次做大，先把一个页面在 superpowers-first 模式下跑通。`

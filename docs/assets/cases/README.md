@@ -6,6 +6,10 @@
 - 典型反例
 - 可复用闭环样本
 
-首轮示例先保留在：
+当前优先包括：
+
+- `docs/assets/cases/user-list-asset-extraction.md`：说明如何从真实页面的 superpowers spec / plan 中抽取共享资产候选
+
+首轮历史示例先保留在：
 
 - `docs/quickstart/examples/`
